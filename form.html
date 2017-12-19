@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SähKuKoLo</title>
+    <meta name="author" content="Einari Tuukkanen">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(() => {
+        var form = $('#myform');
+        form.submit((event) => {
+          // Make form beautiful html
+          var clone = form.clone();
+          var children = clone.children();
+
+          for (var i = 0; i < children.length; i++) {
+            if (children[i].name) {
+              var c = $(children[i]);
+              c.replaceWith(c.val());
+            }
+          }
+
+          // Send POST request with data
+          $.ajax({
+            type: "POST",
+            url: "http://127.0.0.1:5000/submit",
+            data: { html: clone.html() },
+          });
+
+          event.preventDefault();
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <form action="" method="post" id="myform">
+      <label for="name">Nimi:</label>
+      <input type="text" name="name" id="name">
+      <br />
+      <label for="bank">Tilinumero:</label>
+      <input type="text" name="bank" id="bank">
+      <br />
+      <input type="submit" value="Lähetä">
+    </form>
+  </body>
+</html>
