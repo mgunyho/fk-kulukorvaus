@@ -15,7 +15,7 @@ flask run
 
 Open `form.html` in browser, fill the form and submit and you should get `out.pdf` to your working directory.
 
-## Pros & Cons
+## Pros
 + Easy to use
 + Supports complicated styling via CSS
 + Easy to maintain (updating form is done purely in html)
