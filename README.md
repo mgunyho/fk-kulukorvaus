@@ -4,12 +4,12 @@
 Tested using Python 3.5
 
 ```
-pip3 install weasyprint flask flask_cors
+pip3 install weasyprint flask flask_cors beautifulsoup4
 ```
 
 ## Usage
 ```
-export FLASK_APP=hello.py
+export FLASK_APP=app.py
 flask run
 ```
 

@@ -9,22 +9,12 @@
       $(document).ready(() => {
         var form = $('#myform');
         form.submit((event) => {
-          // Make form beautiful html
-          var clone = form.clone();
-          var children = clone.children();
-
-          for (var i = 0; i < children.length; i++) {
-            if (children[i].name) {
-              var c = $(children[i]);
-              c.replaceWith(c.val());
-            }
-          }
 
           // Send POST request with data
           $.ajax({
             type: "POST",
             url: "http://127.0.0.1:5000/submit",
-            data: { html: clone.html() },
+            data:  form.serializeArray(),
           });
 
           event.preventDefault();
